@@ -17,24 +17,16 @@ import java.util.List;
 @Builder
 @Entity
 @Table(name = "users")
-public class UserEntity implements UserDetails {
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id_seq")
     private Long id;
-    private String name;
+
+    @Column(unique = true)
+    private String username;
+
     private String password;
 
-//    @Enumerated(EnumType.ORDINAL)
-//    private UserStatus userStatus;
-    private Integer isAdmin;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
-    }
-
-    @Override
-    public String getUsername() {
-        return "";
-    }
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 }

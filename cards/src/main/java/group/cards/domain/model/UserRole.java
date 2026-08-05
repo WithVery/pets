@@ -1,5 +1,5 @@
 package group.cards.domain.model;
 
-public enum UserStatus {
+public enum UserRole {
     USER, ADMIN
 }

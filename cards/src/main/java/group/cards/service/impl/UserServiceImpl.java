@@ -3,6 +3,7 @@ package group.cards.service.impl;
 import group.cards.domain.model.UserEntity;
 import group.cards.repos.UserRepo;
 import group.cards.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

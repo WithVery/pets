@@ -16,11 +16,11 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping(path = "/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public String registerUser() {
-        return "Ok";
-    }
+//    @PostMapping(path = "/register")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public String registerUser() {
+//        return "Ok";
+//    }
 
 //    @PostMapping(path="/users")
 //    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
@@ -28,12 +28,12 @@ public class UserController {
 //        return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
 //    }
 
-    @PostMapping(path="/users")
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserEntity createUser(@RequestBody UserEntity user) {
-        user.setId(null);
-        return userService.save(user);
-    }
+//    @PostMapping(path="/users")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public UserEntity createUser(@RequestBody UserEntity user) {
+//        user.setId(null);
+//        return userService.save(user);
+//    }
 
     @GetMapping(path = "/users")
     public Iterable<UserEntity> listUSers() {
