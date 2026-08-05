@@ -3,6 +3,7 @@ package group.cards.config;
 import group.cards.security.AuthTokenFilter;
 import group.cards.service.impl.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -31,6 +32,9 @@ public class SecurityConfiguration {
         return new AuthTokenFilter();
     }
 
+    @Value("${restpathprefix}")
+    public String RESTPATHPREFIX;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -38,8 +42,8 @@ public class SecurityConfiguration {
                 .cors(AbstractHttpConfigurer::disable)
                 .sessionManagement((e->e.sessionCreationPolicy(SessionCreationPolicy.STATELESS)))
                 .authorizeHttpRequests( request ->
-                        request.requestMatchers("/signin").permitAll()
-                        .requestMatchers("/users").hasRole("ADMIN")
+                        request.requestMatchers(RESTPATHPREFIX + "/signin").permitAll()
+                        .requestMatchers(RESTPATHPREFIX + "/users").hasRole("ADMIN")
 //                            .requestMatchers("/users").authenticated()
 //                            .anyRequest().permitAll()
                         .anyRequest().authenticated()

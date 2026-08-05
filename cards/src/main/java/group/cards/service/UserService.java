@@ -7,5 +7,8 @@ import java.util.List;
 
 public interface UserService {
     UserEntity save(UserEntity user);
+    void delete(Long id);
+    boolean isExists(Long id);
+    UserEntity partialUpdate(Long id, UserEntity user);
     Iterable<UserEntity> findAll();
 }
