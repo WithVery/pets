@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static group.cards.config.MainConfiguration.WEBROOT;
+
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(WEBROOT)
 public class AuthenticationController {
 
   private AuthenticationManager authenticationManager;

@@ -11,4 +11,5 @@ public interface UserService {
     boolean isExists(Long id);
     UserEntity partialUpdate(Long id, UserEntity user);
     Iterable<UserEntity> findAll();
+    UserEntity findByUsername(String username);
 }

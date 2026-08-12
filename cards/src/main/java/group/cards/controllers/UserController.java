@@ -2,38 +2,27 @@ package group.cards.controllers;
 
 import group.cards.domain.model.UserEntity;
 import group.cards.domain.model.UserRole;
-import group.cards.repos.UserRepo;
 import group.cards.service.UserService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import static group.cards.config.MainConfiguration.WEBROOT;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(WEBROOT)
 public class UserController {
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;
-    private final UserRepo userRepo;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder,
-                          UserRepo userRepo) {
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
       this.userService = userService;
       this.passwordEncoder = passwordEncoder;
-        this.userRepo = userRepo;
     }
 
-//    @PostMapping(path="/users")
-//    public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity user) {
-//        user.setId(null);
-//        return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
-//    }
-
     @GetMapping(path = "/users")
-    public Iterable<UserEntity> listUSers() {
+    public Iterable<UserEntity> listUsers() {
         return userService.findAll();
     }
 

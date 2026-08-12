@@ -31,7 +31,12 @@ public class UserServiceImpl implements UserService {
         return userRepo.findAll();
     }
 
-    @Override
+  @Override
+  public UserEntity findByUsername(String username) {
+    return userRepo.findByUsername(username);
+  }
+
+  @Override
     public void delete(Long id) {
         userRepo.deleteById(id);
     }

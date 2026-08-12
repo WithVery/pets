@@ -4,6 +4,9 @@ import group.cards.domain.model.UserEntity;
 import group.cards.domain.model.UserRole;
 import group.cards.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -38,12 +41,13 @@ public class CustomUserDetailsService implements UserDetailsService {
             .build();
 
         return newUser;
+    }
 
-
-//        return new User(
-//                user.getUsername(),
-//                user.getPassword(),
-//                Collections.emptyList()
-//        );
+    public static UserDetails getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() && !(authentication instanceof AnonymousAuthenticationToken)) {
+            return (UserDetails) authentication.getPrincipal();
+        }
+        return null;
     }
 }
