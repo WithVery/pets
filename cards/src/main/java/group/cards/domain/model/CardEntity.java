@@ -17,7 +17,8 @@ import java.time.LocalDate;
 @Table(name = "cards")
 public class CardEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_id_seg")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "card_id_seg")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "card_id_seg")
     private Long id;
     private String number;
 
@@ -25,7 +26,8 @@ public class CardEntity {
     private CardStatus status;
     private BigDecimal balance;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    //@ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 

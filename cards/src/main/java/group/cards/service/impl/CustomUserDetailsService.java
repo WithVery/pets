@@ -19,7 +19,7 @@ import java.util.Collections;
 public class CustomUserDetailsService implements UserDetailsService {
     private UserRepo userRepo;
 
-    @Autowired
+    //@Autowired
     public CustomUserDetailsService(UserRepo userRepo) {
         this.userRepo = userRepo;
     }

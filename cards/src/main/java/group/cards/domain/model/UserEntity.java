@@ -32,4 +32,13 @@ public class UserEntity {
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+//    UserEntity() {
+//        id = null;
+//        username = "";
+//    }
+
+    public boolean isAdmin() {
+        return this.role == UserRole.ADMIN;
+    }
 }

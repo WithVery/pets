@@ -43,8 +43,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests( request ->
                 request
                 .requestMatchers(WEBROOT + "/signin").permitAll()
-                .requestMatchers(WEBROOT + "/users").hasRole("ADMIN")
-                .requestMatchers(WEBROOT + "/transactions").hasRole("USER")
+//                .requestMatchers(WEBROOT + "/users").hasRole("ADMIN")
+//                .requestMatchers(WEBROOT + "/transactions").hasRole("USER")
                 .anyRequest().authenticated()
 //                    .anyRequest().permitAll()
             );

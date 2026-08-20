@@ -3,11 +3,9 @@ package group.cards.service.impl;
 import group.cards.domain.model.UserEntity;
 import group.cards.repos.UserRepo;
 import group.cards.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -44,7 +42,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean isExists(Long id) {return userRepo.existsById(id);}
 
-    @Override
+  @Override
+  public UserEntity findById(Long id) {
+    return userRepo.findById(id).orElse(null);
+  }
+
+  @Override
     public UserEntity partialUpdate(Long id, UserEntity user) {
         user.setId(id);
 
