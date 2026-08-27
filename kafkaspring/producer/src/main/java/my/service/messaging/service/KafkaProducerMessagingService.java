@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaMessagingService {
+public class KafkaProducerMessagingService {
 
   @Value("${topic.orders}")
   private String sendTopic;
