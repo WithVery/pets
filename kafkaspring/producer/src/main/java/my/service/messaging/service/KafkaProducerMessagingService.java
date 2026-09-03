@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class KafkaProducerMessagingService {
 
   @Value("${topic.orders}")
-  private String sendTopic;
+  private String sendTopic; // "orders-topic";
 
   private final KafkaTemplate<String, Object> kafkaTemplate;
 
