@@ -1,0 +1,4 @@
+Иванов::9::Java,Python
+Петров::1::Java
+Сидоров::5::Java,Python,C++
+Кузнецов::1::Java,Delphi
